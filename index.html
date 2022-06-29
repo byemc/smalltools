@@ -19,12 +19,41 @@
 
     <h3 id="browser-information">Browser information</h3>
     <div class="toollist">
-        <div class="tool" title="Shows the dimentions of the space the webpage can take up.">
-            <a href="windowsize.html">windowsize</a>
-        </div>
+        <a href="browserinfo.html" class="tool">browserinfo</a>
+        <a class="tool" title="Shows the dimentions of the space the webpage can take up." href="windowsize.html">windowsize</a>
     </div>
 
     <hr />
     <footer><p>This site is <a href="https://git.byemc.xyz/smalltools">open source</a>. Fork, make changes, contriubute, whatever!</p></footer>
+
+    <script>
+    var projectchips = document.getElementsByClassName("tool");
+    var projectchipslength = projectchips.length;
+    var i;
+    for (i = 0; i < projectchipslength; i++) {
+        projectchips[i].addEventListener("mouseover", function() {
+            var projectchip = this;
+            var projectchipindex = Array.prototype.indexOf.call(projectchips, projectchip);
+            var j;
+            for (j = 0; j < projectchipslength; j++) {
+                if (j != projectchipindex) {
+                    projectchips[j].classList.add("dimmed");
+                } 
+            }
+        });
+        projectchips[i].addEventListener("mouseout", function() {
+            var projectchip = this;
+            var projectchipindex = Array.prototype.indexOf.call(projectchips, projectchip);
+            var j;
+            for (j = 0; j < projectchipslength; j++) {
+                if (j != projectchipindex) {
+                    projectchips[j].classList.remove("dimmed");
+                }
+            }
+
+            document.body.style.opacity = 1;
+        });
+    }
+    </script>
 </body>
 </html>
